@@ -4,6 +4,7 @@ import  Header from './CustomeComponents/Header';
 import { Todos } from './CustomeComponents/Todos';
 import { Footer } from './CustomeComponents/Footer';
 import { useState } from 'react';
+import { AddToDo } from './CustomeComponents/AddToDo';
 
 function App() {
 const onDelete=(todo)=>{
@@ -13,8 +14,19 @@ setTodos(todos.filter((e)=>{
  return e!==todo;
 
 }))
-
 };
+
+const addtodo=(title, desc)=>
+{
+  console.log("i am adding todo" ,title, desc)
+  let sr=todos[todos.length-1].sr+1;
+  const mytodo={
+      sr:sr,
+      title:title,
+      desc:desc
+
+  }
+}
 
 const [todos, setTodos] = useState(() =>[
     {
@@ -40,6 +52,7 @@ const [todos, setTodos] = useState(() =>[
   return (
     <>
    <Header title="My Todo List" searchBar={false}></Header>
+   <AddToDo addtodo={addtodo}></AddToDo>
    <Todos todos={todos} onDelete={onDelete}></Todos>
    <Footer></Footer>
    </>
