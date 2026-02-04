@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { AddToDo } from './CustomeComponents/AddToDo';
 
 function App() {
+  //Testing git
   let initToDo;
   if(localStorage.getItem("todos")===null)
   {
