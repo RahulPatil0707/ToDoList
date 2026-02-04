@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { AddToDo } from './CustomeComponents/AddToDo';
 
 function App() {
-//git
+//git not asked for global local account , bcoz we added projetc specific local account to store local changes
   let initToDo;
   if(localStorage.getItem("todos")===null)
   {
