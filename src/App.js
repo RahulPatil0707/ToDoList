@@ -18,14 +18,25 @@ setTodos(todos.filter((e)=>{
 
 const addtodo=(title, desc)=>
 {
-  console.log("i am adding todo" ,title, desc)
-  let sr=todos[todos.length-1].sr+1;
+ 
+  let sr;
+  if(todos.length==0)
+  {
+    sr=0;
+  }
+  else{
+    sr=todos[todos.length-1].sr+1;
+  }
+  
+  
   const mytodo={
       sr:sr,
       title:title,
       desc:desc
 
   }
+  setTodos([...todos, mytodo]);
+   console.log("i am adding todo" ,mytodo)
 }
 
 const [todos, setTodos] = useState(() =>[
