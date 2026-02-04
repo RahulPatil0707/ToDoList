@@ -7,6 +7,14 @@ import { useState } from 'react';
 import { AddToDo } from './CustomeComponents/AddToDo';
 
 function App() {
+  let initToDo;
+  if(localStorage.getItem("todos")===null)
+  {
+    initToDo=[];
+  }
+  else{
+    initToDo=JSON.parse(localStorage.getItem("todos"));
+  }
 const onDelete=(todo)=>{
 console.log("I am on delete of todo",todo )
 
@@ -14,6 +22,7 @@ setTodos(todos.filter((e)=>{
  return e!==todo;
 
 }))
+  localStorage.setItem("todos",JSON.stringify(todos));
 };
 
 const addtodo=(title, desc)=>
@@ -37,28 +46,10 @@ const addtodo=(title, desc)=>
   }
   setTodos([...todos, mytodo]);
    console.log("i am adding todo" ,mytodo)
+   localStorage.setItem("todos",JSON.stringify(todos));
 }
 
-const [todos, setTodos] = useState(() =>[
-    {
-      sr:1,
-      title:"Job 1",
-      desc:"Job 1 need to do"
-    },
-     {
-      sr:2,
-      title:"Job 2",
-      desc:"Job 2 need to do"
-    },
-
-     {
-      sr:3,
-      title:"Job 3",
-      desc:"Job 3 need to do"
-    }
-
-
-  ] );
+const [todos, setTodos] = useState(initToDo);
 
   return (
     <>
